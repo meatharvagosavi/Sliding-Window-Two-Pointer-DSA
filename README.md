@@ -1,4 +1,57 @@
-🪟✌️ Sliding Window & Two Pointer TechniquesWelcome! This repository is a collection of algorithmic problems, templates, and explanations focused on two of the most powerful and common patterns in technical interviews: Two Pointers and the Sliding Window.These techniques are essential for optimizing naive $O(N^2)$ or $O(N^3)$ solutions down to $O(N)$ or $O(N \log N)$ time complexity.📖 Table of ContentsAbout the PatternsTwo PointersSliding WindowPattern ComparisonRepository StructureHow to Use This Repo🧠 About the PatternsWhile often grouped together, these patterns serve slightly different purposes. A Sliding Window is technically a specific variation of the Two Pointer technique, but recognizing when to apply which is the key to solving array and string problems efficiently.✌️ Two PointersThe Two Pointer technique involves using two distinct variables to traverse a data structure (usually an array, string, or linked list).Common Variations:Opposite Ends (Meet in the Middle): One pointer starts at the beginning (left) and the other at the end (right). They move toward each other based on a condition.Best for: Sorted arrays (e.g., Two Sum II), checking palindromes, container with most water.Fast & Slow Pointers (Tortoise and Hare): Both pointers start at the same place, but move at different speeds.Best for: Finding cycles in Linked Lists, finding the middle of a Linked List, in-place array modifications (e.g., Remove Duplicates).🪟 Sliding WindowThe Sliding Window technique focuses on maintaining a "window" of elements (a contiguous subarray or substring) bounded by two pointers: a start and an end. As the end pointer expands the window, the start pointer shrinks it to maintain a specific constraint.Common Variations:Fixed Window: The size of the window K remains constant. You compute the value for the first K elements, then slide the window by adding the next element and removing the first element.Best for: Max/Min sum of subarray of size K, moving averages.Variable Window: The window grows and shrinks dynamically based on a target condition.Best for: Longest substring without repeating characters, smallest subarray with a sum $\ge S$.📊 Pattern ComparisonFeatureTwo PointersSliding WindowPrimary GoalSearching for pairs/elements that meet a condition.Calculating data over a contiguous sequence (subarray/substring).MovementCan move independently, towards each other, or at different speeds.Both pointers generally move in the same direction (left to right).ContiguityElements do not need to be contiguous (e.g., finding two numbers that sum to a target).Elements must be contiguous (a strict subarray or substring).Data StructureArrays, Strings, Linked Lists.Arrays, Strings.📂 Repository StructureThe problems in this repository are categorized by pattern and difficulty.Plaintext├── Two_Pointers/
+# 🪟✌️ Sliding Window & Two Pointer Interview Patterns
 
-└── README.md
-Note: Each file contains the problem description, the optimized code, and a brief explanation of the time and space complexity.🚀 How to Use This RepoStart with the Concepts: If you are new to these patterns, review the simple examples in the Easy/ directories first. Look at how the loops are structured.Study the Templates: Look for the core boilerplate loops. For example, variable sliding windows almost always use a for loop for the right pointer and a while loop inside it to adjust the left pointer.Practice: Don't just read the code! Try to implement the logic yourself before looking at the solutions.Language Support: Solutions are primarily provided in [Insert Languages Here, e.g., Python and C++].🤝 ContributingContributions are welcome! If you have a better or alternative solution to a problem, or if you want to add a new problem that fits these patterns:Fork the repository.Create a new branch (git checkout -b feature/new-solution).Commit your changes (git commit -m 'Add optimal solution for problem X').Push to the branch (git push origin feature/new-solution).Open a Pull Request.
+Welcome to my personal archive of optimal solutions for classic **Sliding Window** and **Two Pointer** problems. 
+
+This repository serves as a practical study guide containing clean, efficient implementations of some of the most frequently asked array and string manipulation questions in technical interviews (LeetCode / Striver's A2Z DSA Sheet).
+
+---
+
+## 📋 Solved Problems Index
+
+The repository currently contains solutions to the following problems:
+
+| Problem Name | Primary Pattern | Complexity (Time / Space) |
+| :--- | :--- | :--- |
+| **Binary Subarrays With Sum** | Variable Window / Prefix Sum | `O(N)` / `O(1)` or `O(N)` |
+| **Count Number of Nice Subarrays** | Variable Window | `O(N)` / `O(1)` |
+| **Fruit Into Basket** | Variable Window | `O(N)` / `O(1)` |
+| **Longest Repeating Character Replacement** | Variable Window | `O(N)` / `O(1)` |
+| **Longest Substring Without Repeating Characters**| Variable Window | `O(N)` / `O(min(N, M))` |
+| **Max Consecutive Ones III** | Variable Window | `O(N)` / `O(1)` |
+| **Maximum Points You Can Obtain from Cards** | Fixed Window | `O(K)` / `O(1)` |
+| **Minimal Window Substring** | Variable Window (Hard) | `O(N + M)` / `O(1)` |
+| **Number of Substrings Containing All Three Characters** | Variable Window | `O(N)` / `O(1)` |
+| **Subarrays with K Different Integers** | Variable Window (Hard) | `O(N)` / `O(N)` |
+
+*(Note: `M` generally denotes the size of the character alphabet, e.g., 26 or 128).*
+
+---
+
+## 🧠 Core Strategy Nuggets
+
+If you are reviewing these files for interview prep, keep these three mental shortcuts in mind:
+
+1. **The "At Most" Math Trick** 
+   For problems like *Binary Subarrays With Sum*, *Count Number of Nice Subarrays*, and *Subarrays with K Different Integers*, calculating an exact count `== K` directly is extremely difficult. Instead, solve for:
+   $$\text{Count}(= K) = \text{Count}(\le K) - \text{Count}(\le K - 1)$$
+
+2. **The "Non-Shrinking" Window Optimization**
+   In problems like *Max Consecutive Ones III* or *Longest Repeating Character Replacement*, once your window reaches a valid maximum length $L$, **you never need to shrink it back down**. Instead of a `while` loop that contracts the left pointer, use an `if` statement to shift the entire window to the right. This keeps your logic strictly `O(N)`.
+
+3. **Circular / Opposite Ends (Cards Problem)**
+   For *Maximum Points You Can Obtain from Cards*, rather than trying to simulate taking from the left and right dynamically, calculate the total sum of a fixed window of size `K` from the left, then iteratively slide the window backward into the right side of the array.
+
+---
+
+## 🚀 Repository Navigation
+
+Each file in this repository corresponds directly to the problem title and contains:
+* The core solution class/function.
+* Clean, readable syntax.
+* Minimal overhead so you can copy-paste directly into testing environments like LeetCode.
+
+---
+
+## 🛠️ Language
+
+* **Primary Language:** C++ *(Update this if your repo uses Python/Java)*
